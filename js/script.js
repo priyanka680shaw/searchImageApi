@@ -2,6 +2,10 @@
 function imageHandler(event, search = true){
     event.preventDefault();
    const searchValue = document.querySelector("#inputbox").value;
+   if(searchValue==""){
+    alert("Enter the Search Value");
+    return;
+   }
    console.log(searchValue);
     const promice = fetch(`https://api.unsplash.com/search/photos?page=${count}&query=${searchValue}&client_id=9xDjV6ba5gKToWK3rjaq9CfNmj7v9L9SGwocDxmLRqM`);
     console.log(promice);
@@ -27,7 +31,8 @@ function imageHandler(event, search = true){
                 <img src="${url}" alt="image">
             </figure>
             <figcaption>${description}</figcaption>
-        </div>`;
+        </div>
+       `;
         });
     })
     .catch((error) =>{
